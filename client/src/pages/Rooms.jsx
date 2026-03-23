@@ -158,7 +158,7 @@ const Rooms = () => {
                           <span className={`w-3 h-3 rounded-full inline-block ${available ? 'bg-success' : 'bg-error'} shadow-sm`}></span>
                         </div>
                       </div>
-                      <div className="flex flex-col flex-grow p-5">
+                      <div className="flex flex-col flex-grow p-5 gap-3">
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="text-gray-800 font-semibold text-base mb-1">{room.room_type} Room</h3>
                           <div className="text-right">
@@ -166,29 +166,29 @@ const Rooms = () => {
                             <span className="text-xs text-text-secondary block">/night</span>
                           </div>
                         </div>
-                        <p className="text-sm text-text-secondary line-clamp-2 mb-3">{room.description}</p>
-                        <div className="flex items-center gap-3 text-xs text-text-secondary mb-4">
-                          <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {room.max_occupancy} guests</span>
-                          <span className="flex items-center gap-1"><Wifi className="w-3.5 h-3.5" /> WiFi</span>
-                          <span className="flex items-center gap-1"><Wind className="w-3.5 h-3.5" /> AC</span>
-                          <span className="flex items-center gap-1"><Tv className="w-3.5 h-3.5" /> TV</span>
+                        <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">{room.description}</p>
+                        <div className="flex flex-wrap gap-2 mt-1">
+                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Users className="w-3.5 h-3.5" /> {room.max_occupancy} guests</span>
+                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Wifi className="w-3.5 h-3.5" /> WiFi</span>
+                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Wind className="w-3.5 h-3.5" /> AC</span>
+                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Tv className="w-3.5 h-3.5" /> TV</span>
                         </div>
-                        <div className="mt-auto pt-4 border-t border-gray-100">
-                          <div className="flex flex-wrap gap-1.5 mb-3">
-                          {(room.amenities || []).slice(0, 5).map((a, i) => (
-                            <span key={i} className="px-2 py-0.5 bg-gray-100 text-xs text-gray-500 rounded">{a}</span>
+                        <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+                          <div className="flex flex-wrap gap-2">
+                          {(room.amenities || []).slice(0, 3).map((a, i) => (
+                            <span key={i} className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">{a}</span>
                           ))}
-                          {(room.amenities || []).length > 5 && (
-                            <span className="px-2 py-0.5 bg-gray-100 text-xs text-gray-500 rounded">+{room.amenities.length - 5} more</span>
+                          {(room.amenities || []).length > 3 && (
+                            <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">+{room.amenities.length - 3} more</span>
                           )}
                           </div>
                         <Link to={`/rooms/${room.id}${filters.checkIn ? `?checkIn=${filters.checkIn}&checkOut=${filters.checkOut}` : ''}`}
-                          className={`flex items-center justify-center gap-2 w-full py-2 rounded-lg font-semibold text-sm transition-all ${
+                          className={`bg-[#F59E0B] text-white px-4 py-2 rounded-xl text-sm font-semibold hover:brightness-110 transition whitespace-nowrap ${
                             available
-                              ? 'bg-[#F59E0B] text-white hover:brightness-110'
+                              ? ''
                               : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           }`}>
-                          {available ? <>View Room <ArrowRight className="w-4 h-4" /></> : 'Not Available'}
+                          {available ? 'View Details' : 'Not Available'}
                         </Link>
                         </div>
                       </div>

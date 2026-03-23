@@ -31,11 +31,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1E3A5F] to-[#162d4a] flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-[#1E3A5F] to-[#2d4f7c] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
-        <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md animate-slide-up">
+        <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md mx-auto animate-slide-up">
           <div className="flex justify-center mb-6">
-            <div className="bg-[#F59E0B] w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="bg-[#F59E0B] w-16 h-16 rounded-2xl flex items-center justify-center shadow-md">
               <Hotel className="w-7 h-7 text-white" />
             </div>
           </div>

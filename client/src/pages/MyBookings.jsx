@@ -61,7 +61,7 @@ const MyBookings = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20 bg-bg">
+    <div className="min-h-screen bg-gray-50">
       <div className="gradient-primary py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-white mb-2">My Bookings</h1>
@@ -69,13 +69,15 @@ const MyBookings = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-4xl mx-auto px-6 py-10">
         {bookings.length === 0 ? (
-          <div className="text-center py-20">
-            <Calendar className="w-16 h-16 text-text-secondary/30 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-text mb-2">No bookings yet</h3>
-            <p className="text-text-secondary mb-6">Start exploring our rooms and make your first booking!</p>
-            <Link to="/rooms" className="px-6 py-3 bg-accent hover:bg-accent-dark text-primary-dark font-bold rounded-lg transition-all shadow-lg">
+          <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 text-center">
+            <div className="bg-gray-100 rounded-full p-6 mb-2">
+              <Calendar className="w-16 h-16 text-gray-300" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-700">No bookings yet</h3>
+            <p className="text-gray-400 text-sm max-w-xs">Start exploring our rooms and make your first booking!</p>
+            <Link to="/rooms" className="mt-2 bg-[#F59E0B] text-white px-6 py-3 rounded-xl font-semibold hover:brightness-110 transition">
               Browse Rooms
             </Link>
           </div>

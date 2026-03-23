@@ -64,30 +64,30 @@ const Home = () => {
             </p>
 
             {/* Search Box */}
-            <form onSubmit={handleSearch} className="bg-white rounded-2xl shadow-2xl p-4 flex flex-col md:flex-row items-end gap-4 w-full max-w-3xl mx-auto mt-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            <form onSubmit={handleSearch} className="bg-white rounded-2xl shadow-2xl px-6 py-4 flex flex-col md:flex-row items-end gap-4 w-full max-w-3xl mx-auto mt-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1 w-full">
-                <div className="flex flex-col gap-1 flex-1 w-full min-w-0">
-                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left">Check-in</label>
+                <div className="flex flex-col gap-1 flex-1 w-full min-w-0 px-2">
+                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left pl-1">Check-in</label>
                   <div className="relative">
                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <input type="date" value={checkIn} onChange={e => setCheckIn(e.target.value)} min={today}
-                      className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1E3A5F]" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-[#1E3A5F] bg-gray-50" />
                   </div>
                 </div>
-                <div className="flex flex-col gap-1 flex-1 w-full min-w-0">
-                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left">Check-out</label>
+                <div className="flex flex-col gap-1 flex-1 w-full min-w-0 px-2">
+                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left pl-1">Check-out</label>
                   <div className="relative">
                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <input type="date" value={checkOut} onChange={e => setCheckOut(e.target.value)} min={checkIn || today}
-                      className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1E3A5F]" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-[#1E3A5F] bg-gray-50" />
                   </div>
                 </div>
-                <div className="flex flex-col gap-1 flex-1 w-full min-w-0">
-                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left">Guests</label>
+                <div className="flex flex-col gap-1 flex-1 w-full min-w-0 px-2">
+                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left pl-1">Guests</label>
                   <div className="relative">
                     <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <select value={guests} onChange={e => setGuests(parseInt(e.target.value))}
-                      className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1E3A5F] appearance-none bg-white">
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-[#1E3A5F] bg-gray-50 appearance-none">
                       {[1,2,3,4].map(n => <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>)}
                     </select>
                   </div>
