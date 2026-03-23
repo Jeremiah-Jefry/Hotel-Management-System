@@ -43,7 +43,7 @@ const Confirmation = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-bg">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-2xl mx-auto px-6 py-10 text-center">
         {/* Progress */}
         <div className="flex items-center justify-center gap-4 mb-10">
           {['Room', 'Details', 'Payment', 'Confirm'].map((step, i) => (
@@ -121,7 +121,7 @@ const Confirmation = () => {
                   <img src={qrCode} alt="Booking QR Code" className="w-48 h-48 mx-auto" />
                 </div>
                 <a href={qrCode} download={`hotelease-booking-${booking?.id?.slice(0, 8)}.png`}
-                  className="flex items-center justify-center gap-2 w-full py-3 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg text-sm">
+                  className="flex items-center justify-center gap-2 w-full py-3 border-2 border-[#1E3A5F] text-[#1E3A5F] font-semibold rounded-xl hover:bg-[#1E3A5F] hover:text-white transition text-sm">
                   <Download className="w-4 h-4" /> Download QR Code
                 </a>
               </>
@@ -136,10 +136,10 @@ const Confirmation = () => {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
-          <Link to="/my-bookings" className="px-8 py-3 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-all shadow-md text-sm text-center">
+          <Link to="/my-bookings" className="px-6 py-3 bg-[#1E3A5F] text-white rounded-xl font-semibold hover:bg-[#162d4a] transition text-sm text-center">
             View My Bookings
           </Link>
-          <Link to="/rooms" className="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all text-sm text-center">
+          <Link to="/rooms" className="px-6 py-3 border-2 border-[#1E3A5F] text-[#1E3A5F] rounded-xl font-semibold hover:bg-[#1E3A5F] hover:text-white transition text-sm text-center">
             Book Another Room
           </Link>
         </div>

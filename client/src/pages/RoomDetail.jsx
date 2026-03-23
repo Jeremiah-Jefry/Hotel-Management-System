@@ -67,19 +67,19 @@ const RoomDetail = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-bg">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-5xl mx-auto px-6 py-10">
         {/* Back button */}
         <button onClick={() => navigate('/rooms')}
           className="flex items-center gap-2 text-sm text-text-secondary hover:text-text mb-6 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back to Rooms
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Left — Room Details */}
-          <div className="lg:col-span-3">
+          <div>
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-border">
-              <div className="relative h-72 sm:h-96">
-                <img src={room.image_url} alt={room.room_type} className="w-full h-full object-cover" />
+              <div className="relative h-72 sm:h-96 rounded-2xl overflow-hidden shadow-md">
+                <img src={room.image_url} alt={room.room_type} className="w-full h-72 object-cover rounded-2xl shadow-md" />
                 <div className="absolute top-4 left-4 flex gap-2">
                   <span className="px-3 py-1.5 bg-white/90 backdrop-blur text-sm font-bold rounded-full text-primary shadow">
                     {room.room_type}
@@ -92,12 +92,12 @@ const RoomDetail = () => {
               <div className="p-6 sm:p-8">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h1 className="text-2xl font-bold text-text">{room.room_type} Room</h1>
+                    <h1 className="text-2xl font-bold text-[#1E3A5F]">{room.room_type} Room</h1>
                     <p className="text-text-secondary text-sm mt-1">Room {room.room_number} • Up to {room.max_occupancy} guests</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-3xl font-bold text-accent">₹{parseFloat(room.price_per_night).toLocaleString()}</span>
-                    <span className="text-sm text-text-secondary block">/night</span>
+                    <span className="text-3xl font-bold text-[#F59E0B]">₹{parseFloat(room.price_per_night).toLocaleString()}</span>
+                    <span className="text-sm text-gray-400 font-normal ml-1 block">/night</span>
                   </div>
                 </div>
 
@@ -132,7 +132,7 @@ const RoomDetail = () => {
           </div>
 
           {/* Right — Booking Card */}
-          <div className="lg:col-span-2">
+          <div>
             <div className="bg-white rounded-2xl shadow-lg border border-border p-6 sticky top-24">
               <h3 className="text-lg font-bold text-text mb-1">Book This Room</h3>
               <p className="text-sm text-text-secondary mb-6">Select your dates to check availability</p>
@@ -170,7 +170,7 @@ const RoomDetail = () => {
                   <hr className="my-3 border-border" />
                   <div className="flex justify-between">
                     <span className="font-bold text-text">Total</span>
-                    <span className="text-xl font-bold text-accent">₹{totalAmount.toLocaleString()}</span>
+                    <span className="text-xl font-bold text-[#1E3A5F]">₹{totalAmount.toLocaleString()}</span>
                   </div>
                 </div>
               )}

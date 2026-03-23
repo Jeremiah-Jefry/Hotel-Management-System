@@ -16,34 +16,34 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-dark shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full bg-[#1E3A5F] shadow-md">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between w-full h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-9 h-9 rounded-lg gradient-accent flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
               <Hotel className="w-5 h-5 text-primary-dark" />
             </div>
-            <span className="text-xl font-bold text-white tracking-tight">
-              Hotel<span className="text-accent">Ease</span>
+            <span className="text-xl font-bold text-white tracking-wide">
+              Hotel<span className="text-[#F59E0B]">Ease</span>
             </span>
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link to="/" className="px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+          <div className="hidden md:flex items-center gap-8">
+            <Link to="/" className="text-white text-sm font-medium hover:text-[#F59E0B] transition-colors">
               Home
             </Link>
-            <Link to="/rooms" className="px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+            <Link to="/rooms" className="text-white text-sm font-medium hover:text-[#F59E0B] transition-colors">
               Rooms
             </Link>
             {isAuthenticated && (
-              <Link to="/my-bookings" className="px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+              <Link to="/my-bookings" className="text-white text-sm font-medium hover:text-[#F59E0B] transition-colors">
                 My Bookings
               </Link>
             )}
             {isAdmin && (
-              <Link to="/admin" className="px-4 py-2 text-sm font-medium text-accent hover:text-accent-light hover:bg-white/10 rounded-lg transition-all">
+              <Link to="/admin" className="text-[#F59E0B] text-sm font-medium hover:text-yellow-300 transition-colors">
                 Dashboard
               </Link>
             )}
@@ -89,10 +89,10 @@ const Navbar = () => {
               </div>
             ) : (
               <>
-                <Link to="/login" className="px-4 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors">
+                <Link to="/login" className="border border-white text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-white hover:text-[#1E3A5F] transition-colors">
                   Login
                 </Link>
-                <Link to="/register" className="px-4 py-2 text-sm font-semibold bg-accent hover:bg-accent-dark text-primary-dark rounded-lg transition-all shadow-md hover:shadow-lg">
+                <Link to="/register" className="bg-[#F59E0B] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:brightness-110 transition">
                   Sign Up
                 </Link>
               </>
@@ -108,19 +108,19 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-primary border-t border-white/10 shadow-lg animate-slide-down">
-          <div className="w-full flex flex-col gap-1 px-4 py-3">
+        <div className="md:hidden bg-[#1E3A5F] border-t border-white/20 shadow-lg animate-slide-down">
+          <div className="w-full flex flex-col gap-4 px-4 py-4">
             <Link to="/" onClick={() => setIsOpen(false)}
-              className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+              className="text-white text-sm font-medium hover:text-[#F59E0B] transition-colors">
               Home
             </Link>
             <Link to="/rooms" onClick={() => setIsOpen(false)}
-              className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+              className="text-white text-sm font-medium hover:text-[#F59E0B] transition-colors">
               Rooms
             </Link>
             {isAuthenticated && (
               <Link to="/my-bookings" onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all">
+                className="text-white text-sm font-medium hover:text-[#F59E0B] transition-colors">
                 My Bookings
               </Link>
             )}
@@ -142,11 +142,11 @@ const Navbar = () => {
             ) : (
               <div className="flex gap-3 pt-2">
                 <Link to="/login" onClick={() => setIsOpen(false)}
-                  className="flex-1 text-center px-4 py-3 text-white border border-white/30 rounded-lg hover:bg-white/10 transition-all">
+                  className="flex-1 text-center border border-white text-white px-4 py-2 rounded-lg text-sm hover:bg-white hover:text-[#1E3A5F] transition-colors">
                   Login
                 </Link>
                 <Link to="/register" onClick={() => setIsOpen(false)}
-                  className="flex-1 text-center px-4 py-3 bg-accent text-primary-dark font-semibold rounded-lg hover:bg-accent-dark transition-all">
+                  className="flex-1 text-center bg-[#F59E0B] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:brightness-110 transition">
                   Sign Up
                 </Link>
               </div>

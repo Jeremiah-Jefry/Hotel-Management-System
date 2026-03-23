@@ -42,7 +42,7 @@ const Home = () => {
   const today = new Date().toISOString().split('T')[0];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
       <section className="relative gradient-hero min-h-[90vh] flex items-center overflow-hidden">
         {/* Decorative elements */}
@@ -52,22 +52,22 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="relative max-w-7xl mx-auto px-6 py-20 w-full">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-medium mb-6 animate-fade-in">
               <Star className="w-4 h-4" /> Premium Hotel Experience
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6 animate-slide-up">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6 animate-slide-up">
               Book Smart.<br />
               <span className="text-accent">Stay Comfortable.</span>
             </h1>
-            <p className="text-lg text-white/60 max-w-xl mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-lg text-white/80 max-w-xl mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               Discover luxury rooms, make secure payments via Razorpay, and enjoy contactless QR check-in. Your perfect hotel experience starts here.
             </p>
 
             {/* Search Box */}
-            <form onSubmit={handleSearch} className="glass rounded-2xl p-4 sm:p-6 shadow-2xl animate-slide-up max-w-2xl" style={{ animationDelay: '0.3s' }}>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+            <form onSubmit={handleSearch} className="bg-white rounded-2xl shadow-xl p-4 flex flex-col md:flex-row items-end gap-4 w-full max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1 w-full">
                 <div>
                   <label className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-1.5 block">Check-in</label>
                   <div className="relative">
@@ -96,7 +96,7 @@ const Home = () => {
                 </div>
               </div>
               <button type="submit"
-                className="w-full py-3 bg-accent hover:bg-accent-dark text-primary-dark font-bold rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm">
+                className="bg-[#F59E0B] text-white px-6 py-3 rounded-xl font-semibold w-full md:w-auto whitespace-nowrap hover:brightness-110 flex items-center justify-center gap-2 text-sm">
                 <Search className="w-4 h-4" /> Search Available Rooms
               </button>
             </form>
@@ -105,9 +105,9 @@ const Home = () => {
       </section>
 
       {/* Featured Rooms */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-6 py-16 w-full">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-text mb-3">Our Premium Rooms</h2>
+          <h2 className="text-2xl font-bold text-[#1E3A5F] mb-8">Our Premium Rooms</h2>
           <p className="text-text-secondary max-w-xl mx-auto">Choose from our carefully curated selection of rooms designed for your ultimate comfort.</p>
         </div>
 
@@ -152,25 +152,25 @@ const Home = () => {
       </section>
 
       {/* Why HotelEase */}
-      <section className="py-20 bg-white">
+      <section className="bg-gray-50 w-full px-6 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-3">Why Choose HotelEase?</h2>
+            <h2 className="text-2xl font-bold text-[#1E3A5F] mb-3">Why Choose HotelEase?</h2>
             <p className="text-text-secondary max-w-xl mx-auto">Modern hotel booking reimagined with cutting-edge technology.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: Zap, title: 'Fast Booking', desc: 'Complete your entire booking in under 2 minutes. Quick, simple, effortless.', color: 'bg-blue-50 text-blue-600' },
               { icon: Shield, title: 'Secure Payment', desc: 'Razorpay-powered payments with HMAC SHA256 signature verification.', color: 'bg-green-50 text-green-600' },
               { icon: QrCode, title: 'Contactless Check-in', desc: 'Get a QR code instantly after payment. Scan and check in — no queues.', color: 'bg-amber-50 text-amber-600' }
             ].map(({ icon: Icon, title, desc, color }, i) => (
-              <div key={i} className="text-center p-8 rounded-2xl bg-bg card-hover animate-slide-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className={`w-16 h-16 ${color} rounded-2xl flex items-center justify-center mx-auto mb-5`}>
+              <div key={i} className="flex flex-col items-center text-center gap-3 p-6 bg-white rounded-2xl shadow-sm animate-slide-up" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className={`bg-[#1E3A5F]/10 p-4 rounded-full ${color} flex items-center justify-center`}>
                   <Icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-bold text-text mb-2">{title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">{desc}</p>
+                <h3 className="text-[#1E3A5F] font-semibold text-lg">{title}</h3>
+                <p className="text-gray-500 text-sm">{desc}</p>
               </div>
             ))}
           </div>

@@ -68,7 +68,7 @@ const Booking = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-bg">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-5xl mx-auto px-6 py-10">
         {/* Progress Bar */}
         <div className="flex items-center justify-center gap-4 mb-10">
           {['Room', 'Details', 'Payment', 'Confirm'].map((step, i) => (
@@ -86,33 +86,33 @@ const Booking = () => {
           {/* Form */}
           <div>
             <div className="bg-white rounded-2xl shadow-sm border border-border p-6 sm:p-8">
-              <h2 className="text-xl font-bold text-text mb-6">Guest Information</h2>
+              <h2 className="text-xl font-bold text-[#1E3A5F] mb-6">Guest Information</h2>
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div className="flex flex-col gap-1 w-full">
-                    <label className="text-sm font-medium text-gray-700 text-left mb-1.5 block">Full Name</label>
+                    <label className="text-sm font-medium text-gray-600 text-left mb-1.5 block">Full Name</label>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                       <input type="text" value={user?.name || ''} readOnly
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm bg-bg cursor-not-allowed focus:outline-none" />
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-sm bg-bg cursor-not-allowed focus:outline-none" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1 w-full">
-                    <label className="text-sm font-medium text-gray-700 text-left mb-1.5 block">Email</label>
+                    <label className="text-sm font-medium text-gray-600 text-left mb-1.5 block">Email</label>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                       <input type="email" value={user?.email || ''} readOnly
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm bg-bg cursor-not-allowed focus:outline-none" />
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-sm bg-bg cursor-not-allowed focus:outline-none" />
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-1 w-full mb-4">
-                  <label className="text-sm font-medium text-gray-700 text-left mb-1.5 block">Phone Number</label>
+                  <label className="text-sm font-medium text-gray-600 text-left mb-1.5 block">Phone Number</label>
                   <div className="relative">
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+91 98765 43210"
-                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" />
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:border-[#1E3A5F] focus:ring-1 focus:ring-[#1E3A5F]" />
                   </div>
                 </div>
 
@@ -138,7 +138,7 @@ const Booking = () => {
                 </div>
 
                 <button type="submit" disabled={loading}
-                  className="w-full lg:w-auto px-6 py-2 bg-accent hover:bg-accent-dark text-primary-dark font-bold rounded-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 text-sm">
+                  className="w-full bg-[#F59E0B] text-white py-3 rounded-xl font-semibold hover:brightness-110 transition mt-4 disabled:opacity-50 flex items-center justify-center gap-2 text-sm">
                   {loading ? (
                     <><span className="w-4 h-4 border-2 border-primary-dark border-t-transparent rounded-full animate-spin"></span> Processing...</>
                   ) : (
@@ -151,27 +151,27 @@ const Booking = () => {
 
           {/* Booking Summary */}
           <div>
-            <div className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden sticky top-24">
+            <div className="bg-[#1E3A5F] text-white rounded-2xl shadow-md p-6 flex flex-col gap-4 h-fit sticky top-24">
               <div className="h-40 overflow-hidden">
                 <img src={room.image_url} alt={room.room_type} className="w-full h-full object-cover" />
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-text mb-1">{room.room_type} Room</h3>
-                <p className="text-sm text-text-secondary mb-4">Room {room.room_number}</p>
+              <div className="p-0">
+                <h3 className="text-white font-semibold text-lg mb-2">{room.room_type} Room</h3>
+                <p className="text-white/70 text-sm mb-4">Room {room.room_number}</p>
 
                 <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-text-secondary">Rate per night</span>
-                    <span className="font-medium">₹{parseFloat(room.price_per_night).toLocaleString()}</span>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-white/70">Rate per night</span>
+                    <span className="text-white font-medium">₹{parseFloat(room.price_per_night).toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-text-secondary">Duration</span>
-                    <span className="font-medium">{nights} night{nights > 1 ? 's' : ''}</span>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-white/70">Duration</span>
+                    <span className="text-white font-medium">{nights} night{nights > 1 ? 's' : ''}</span>
                   </div>
-                  <hr className="border-border" />
-                  <div className="flex justify-between text-base">
-                    <span className="font-bold text-text">Total Amount</span>
-                    <span className="font-bold text-accent text-xl">₹{totalAmount.toLocaleString()}</span>
+                  <hr className="border-white/20" />
+                  <div className="flex items-center justify-between border-t border-white/20 pt-4 mt-2">
+                    <span className="text-white font-semibold">Total Amount</span>
+                    <span className="text-[#F59E0B] text-xl font-bold">₹{totalAmount.toLocaleString()}</span>
                   </div>
                 </div>
               </div>

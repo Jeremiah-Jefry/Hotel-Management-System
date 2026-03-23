@@ -88,7 +88,7 @@ const Payment = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-bg">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-3xl mx-auto px-6 py-10">
         {/* Progress */}
         <div className="flex items-center justify-center gap-4 mb-10">
           {['Room', 'Details', 'Payment', 'Confirm'].map((step, i) => (
@@ -107,7 +107,7 @@ const Payment = () => {
             <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <CreditCard className="w-8 h-8 text-primary" />
             </div>
-            <h2 className="text-2xl font-bold text-text">Complete Payment</h2>
+            <h2 className="text-2xl font-bold text-[#1E3A5F]">Complete Payment</h2>
             <p className="text-sm text-text-secondary mt-1">Secure payment powered by Razorpay</p>
           </div>
 
@@ -152,7 +152,7 @@ const Payment = () => {
           </div>
 
           <button onClick={handlePayment} disabled={processing}
-            className="w-full lg:w-auto px-6 py-2 bg-accent hover:bg-accent-dark text-primary-dark font-bold rounded-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 text-base mx-auto">
+            className="w-full bg-[#F59E0B] text-white py-3 rounded-xl font-bold text-lg hover:brightness-110 transition disabled:opacity-50 flex items-center justify-center gap-2">
             {processing ? (
               <><span className="w-5 h-5 border-2 border-primary-dark border-t-transparent rounded-full animate-spin"></span> Processing...</>
             ) : (
@@ -161,7 +161,7 @@ const Payment = () => {
           </button>
 
           {order.isSimulated && (
-            <p className="text-xs text-center text-text-secondary mt-3">
+            <p className="text-center text-xs text-gray-400 mt-3 flex items-center justify-center gap-1">
               🧪 Demo mode: Payment will be simulated. No real charges.
             </p>
           )}
