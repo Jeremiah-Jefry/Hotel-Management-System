@@ -44,74 +44,71 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
-      <section className="relative gradient-hero min-h-[90vh] flex items-center overflow-hidden">
+      <section className="w-full bg-[#1E3A5F] min-h-[85vh] flex flex-col items-center justify-center px-6 py-20 text-center relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#F59E0B]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#F59E0B]/5 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-20 w-full">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-medium mb-6 animate-fade-in">
+        <div className="relative max-w-3xl mx-auto flex flex-col items-center gap-6 w-full">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#F59E0B]/20 text-[#F59E0B] rounded-full text-sm font-medium animate-fade-in">
               <Star className="w-4 h-4" /> Premium Hotel Experience
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6 animate-slide-up">
+            <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-center animate-slide-up">
               Book Smart.<br />
-              <span className="text-accent">Stay Comfortable.</span>
+              <span className="text-[#F59E0B]">Stay Comfortable.</span>
             </h1>
-            <p className="text-lg text-white/80 max-w-xl mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-white/80 text-lg max-w-xl mx-auto text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
               Discover luxury rooms, make secure payments via Razorpay, and enjoy contactless QR check-in. Your perfect hotel experience starts here.
             </p>
 
             {/* Search Box */}
-            <form onSubmit={handleSearch} className="bg-white rounded-2xl shadow-xl p-4 flex flex-col md:flex-row items-end gap-4 w-full max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            <form onSubmit={handleSearch} className="bg-white rounded-2xl shadow-2xl p-4 flex flex-col md:flex-row items-end gap-4 w-full max-w-3xl mx-auto mt-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1 w-full">
-                <div>
-                  <label className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-1.5 block">Check-in</label>
+                <div className="flex flex-col gap-1 flex-1 w-full min-w-0">
+                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left">Check-in</label>
                   <div className="relative">
                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <input type="date" value={checkIn} onChange={e => setCheckIn(e.target.value)} min={today}
-                      className="w-full pl-10 pr-3 py-2.5 border border-border rounded-lg text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
+                      className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1E3A5F]" />
                   </div>
                 </div>
-                <div>
-                  <label className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-1.5 block">Check-out</label>
+                <div className="flex flex-col gap-1 flex-1 w-full min-w-0">
+                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left">Check-out</label>
                   <div className="relative">
                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <input type="date" value={checkOut} onChange={e => setCheckOut(e.target.value)} min={checkIn || today}
-                      className="w-full pl-10 pr-3 py-2.5 border border-border rounded-lg text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all" />
+                      className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1E3A5F]" />
                   </div>
                 </div>
-                <div>
-                  <label className="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-1.5 block">Guests</label>
+                <div className="flex flex-col gap-1 flex-1 w-full min-w-0">
+                  <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-left">Guests</label>
                   <div className="relative">
                     <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary" />
                     <select value={guests} onChange={e => setGuests(parseInt(e.target.value))}
-                      className="w-full pl-10 pr-3 py-2.5 border border-border rounded-lg text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none appearance-none bg-white transition-all">
+                      className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1E3A5F] appearance-none bg-white">
                       {[1,2,3,4].map(n => <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>)}
                     </select>
                   </div>
                 </div>
               </div>
               <button type="submit"
-                className="bg-[#F59E0B] text-white px-6 py-3 rounded-xl font-semibold w-full md:w-auto whitespace-nowrap hover:brightness-110 flex items-center justify-center gap-2 text-sm">
+                className="bg-[#F59E0B] text-white px-6 py-3 rounded-xl font-bold text-sm whitespace-nowrap hover:brightness-110 transition w-full md:w-auto flex-shrink-0 flex items-center justify-center gap-2">
                 <Search className="w-4 h-4" /> Search Available Rooms
               </button>
             </form>
-          </div>
         </div>
       </section>
 
       {/* Featured Rooms */}
       <section className="max-w-7xl mx-auto px-6 py-16 w-full">
         <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-[#1E3A5F] mb-8">Our Premium Rooms</h2>
-          <p className="text-text-secondary max-w-xl mx-auto">Choose from our carefully curated selection of rooms designed for your ultimate comfort.</p>
+          <h2 className="text-3xl font-bold text-[#1E3A5F] text-center mb-4">Our Premium Rooms</h2>
+          <p className="text-gray-500 text-center mb-10 max-w-xl mx-auto">Choose from our carefully curated selection of rooms designed for your ultimate comfort.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {featuredRooms.map((room, idx) => (
             <div key={room.id} className="bg-white rounded-2xl overflow-hidden shadow-lg card-hover animate-slide-up" style={{ animationDelay: `${idx * 0.1}s` }}>
               <div className="relative h-56 overflow-hidden">
@@ -145,7 +142,7 @@ const Home = () => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/rooms" className="inline-flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primary-light text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl">
+          <Link to="/rooms" className="inline-flex items-center gap-2 px-8 py-3 bg-[#1E3A5F] hover:bg-[#162d4a] text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl">
             View All Rooms <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -159,18 +156,18 @@ const Home = () => {
             <p className="text-text-secondary max-w-xl mx-auto">Modern hotel booking reimagined with cutting-edge technology.</p>
           </div>
 
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
             {[
               { icon: Zap, title: 'Fast Booking', desc: 'Complete your entire booking in under 2 minutes. Quick, simple, effortless.', color: 'bg-blue-50 text-blue-600' },
               { icon: Shield, title: 'Secure Payment', desc: 'Razorpay-powered payments with HMAC SHA256 signature verification.', color: 'bg-green-50 text-green-600' },
               { icon: QrCode, title: 'Contactless Check-in', desc: 'Get a QR code instantly after payment. Scan and check in — no queues.', color: 'bg-amber-50 text-amber-600' }
             ].map(({ icon: Icon, title, desc, color }, i) => (
-              <div key={i} className="flex flex-col items-center text-center gap-3 p-6 bg-white rounded-2xl shadow-sm animate-slide-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className={`bg-[#1E3A5F]/10 p-4 rounded-full ${color} flex items-center justify-center`}>
+              <div key={i} className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center gap-4 hover:shadow-lg transition-shadow animate-slide-up" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className={`bg-[#1E3A5F]/10 p-4 rounded-full w-16 h-16 flex items-center justify-center ${color}`}>
                   <Icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-[#1E3A5F] font-semibold text-lg">{title}</h3>
-                <p className="text-gray-500 text-sm">{desc}</p>
+                <h3 className="text-[#1E3A5F] font-bold text-lg">{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>

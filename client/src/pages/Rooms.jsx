@@ -174,12 +174,14 @@ const Rooms = () => {
                           <span className="flex items-center gap-1"><Tv className="w-3.5 h-3.5" /> TV</span>
                         </div>
                         <div className="mt-auto pt-4 border-t border-gray-100">
+                          <div className="flex flex-wrap gap-1.5 mb-3">
                           {(room.amenities || []).slice(0, 5).map((a, i) => (
-                            <span key={i} className="px-2 py-0.5 bg-bg text-xs text-text-secondary rounded">{a}</span>
+                            <span key={i} className="px-2 py-0.5 bg-gray-100 text-xs text-gray-500 rounded">{a}</span>
                           ))}
                           {(room.amenities || []).length > 5 && (
-                            <span className="px-2 py-0.5 bg-bg text-xs text-text-secondary rounded">+{room.amenities.length - 5} more</span>
+                            <span className="px-2 py-0.5 bg-gray-100 text-xs text-gray-500 rounded">+{room.amenities.length - 5} more</span>
                           )}
+                          </div>
                         <Link to={`/rooms/${room.id}${filters.checkIn ? `?checkIn=${filters.checkIn}&checkOut=${filters.checkOut}` : ''}`}
                           className={`flex items-center justify-center gap-2 w-full py-2 rounded-lg font-semibold text-sm transition-all ${
                             available

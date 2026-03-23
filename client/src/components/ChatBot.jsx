@@ -118,7 +118,7 @@ const ChatBot = () => {
           {/* Quick Replies */}
           {messages.length <= 2 && (
             <div className="px-4 py-2 bg-white border-t border-border shrink-0">
-              <div className="flex gap-2 overflow-x-auto">
+              <div className="flex flex-wrap gap-2 overflow-hidden">
                 {quickReplies.map((q, i) => (
                   <button key={i} onClick={() => sendMessage(q.message)}
                     className="border border-[#1E3A5F] text-[#1E3A5F] text-xs px-3 py-1 rounded-full whitespace-nowrap hover:bg-[#1E3A5F] hover:text-white transition cursor-pointer">
