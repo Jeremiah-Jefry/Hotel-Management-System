@@ -88,7 +88,7 @@ const Payment = () => {
 
   return (
     <div className="min-h-screen pt-20 bg-bg">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Progress */}
         <div className="flex items-center justify-center gap-4 mb-10">
           {['Room', 'Details', 'Payment', 'Confirm'].map((step, i) => (
@@ -113,7 +113,7 @@ const Payment = () => {
 
           {/* Order Summary */}
           <div className="bg-bg rounded-xl p-5 mb-6">
-            <h3 className="text-sm font-semibold text-text mb-4">Order Summary</h3>
+            <h3 className="text-sm font-medium text-gray-700 text-left mb-4">Order Summary</h3>
             <div className="space-y-3 text-sm">
               <div className="flex justify-between">
                 <span className="text-text-secondary">Room</span>
@@ -152,7 +152,7 @@ const Payment = () => {
           </div>
 
           <button onClick={handlePayment} disabled={processing}
-            className="w-full py-4 bg-accent hover:bg-accent-dark text-primary-dark font-bold rounded-xl transition-all shadow-lg hover:shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 text-base">
+            className="w-full lg:w-auto px-6 py-2 bg-accent hover:bg-accent-dark text-primary-dark font-bold rounded-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 text-base mx-auto">
             {processing ? (
               <><span className="w-5 h-5 border-2 border-primary-dark border-t-transparent rounded-full animate-spin"></span> Processing...</>
             ) : (

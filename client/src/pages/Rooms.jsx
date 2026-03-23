@@ -118,7 +118,7 @@ const Rooms = () => {
           {/* Room Cards Grid */}
           <div className="flex-1">
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[...Array(6)].map((_, i) => (
                   <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm">
                     <div className="h-48 skeleton"></div>
@@ -138,14 +138,14 @@ const Rooms = () => {
                 <p className="text-text-secondary">Try adjusting your filters or dates.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {rooms.map((room, idx) => {
                   const available = room.is_available_for_dates !== false && room.is_available;
                   return (
-                    <div key={room.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-border card-hover animate-fade-in" style={{ animationDelay: `${idx * 0.05}s` }}>
-                      <div className="relative h-48 overflow-hidden">
+                    <div key={room.id} className="flex flex-col h-full bg-white rounded-xl shadow-md overflow-hidden border border-border card-hover animate-fade-in" style={{ animationDelay: `${idx * 0.05}s` }}>
+                      <div className="relative w-full h-48 overflow-hidden">
                         <img src={room.image_url} alt={`Room ${room.room_number}`}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+                          className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
                         <div className="absolute top-3 left-3 flex gap-2">
                           <span className="px-2.5 py-1 bg-white/90 backdrop-blur text-xs font-bold rounded-full text-primary shadow-sm">
                             {room.room_type}
@@ -158,7 +158,7 @@ const Rooms = () => {
                           <span className={`w-3 h-3 rounded-full inline-block ${available ? 'bg-success' : 'bg-error'} shadow-sm`}></span>
                         </div>
                       </div>
-                      <div className="p-5">
+                      <div className="flex flex-col flex-grow p-4">
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="text-lg font-bold text-text">{room.room_type} Room</h3>
                           <div className="text-right">
@@ -173,7 +173,7 @@ const Rooms = () => {
                           <span className="flex items-center gap-1"><Wind className="w-3.5 h-3.5" /> AC</span>
                           <span className="flex items-center gap-1"><Tv className="w-3.5 h-3.5" /> TV</span>
                         </div>
-                        <div className="flex flex-wrap gap-1.5 mb-4">
+                        <div className="flex flex-wrap gap-1.5 mb-4 mt-auto pt-2">
                           {(room.amenities || []).slice(0, 5).map((a, i) => (
                             <span key={i} className="px-2 py-0.5 bg-bg text-xs text-text-secondary rounded">{a}</span>
                           ))}

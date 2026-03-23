@@ -64,7 +64,7 @@ const AdminStats = () => {
   return (
     <>
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
         {[
           { icon: Calendar, label: 'Total Bookings', value: stats?.totalBookings || 0, color: 'bg-blue-50 text-blue-600', border: 'border-blue-200' },
           { icon: DollarSign, label: 'Total Revenue', value: `₹${(stats?.totalRevenue || 0).toLocaleString()}`, color: 'bg-green-50 text-green-600', border: 'border-green-200' },
@@ -86,24 +86,24 @@ const AdminStats = () => {
       </div>
 
       {/* Recent Bookings Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden">
+      <div className="overflow-x-auto w-full rounded-xl shadow bg-white border border-border">
         <div className="px-6 py-4 border-b border-border flex justify-between items-center">
           <h3 className="text-lg font-bold text-text">Recent Bookings</h3>
           <Link to="/admin/bookings" className="text-sm text-accent font-semibold hover:underline">View All →</Link>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="min-w-full text-sm text-left">
             <thead className="bg-bg">
               <tr>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Booking ID</th>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Guest</th>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Room</th>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Check-in</th>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Check-out</th>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Amount</th>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Status</th>
-                <th className="text-left px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider">Actions</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Booking ID</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Guest</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Room</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Check-in</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Check-out</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Amount</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Status</th>
+                <th className="px-4 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider whitespace-nowrap">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -112,26 +112,26 @@ const AdminStats = () => {
               ) : (
                 recentBookings.map((b) => (
                   <tr key={b.id} className="hover:bg-bg/50 transition-colors">
-                    <td className="px-6 py-4 font-mono text-xs">{b.id.slice(0, 8)}...</td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 py-3 font-mono text-xs whitespace-nowrap">{b.id.slice(0, 8)}...</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
                       <div>
                         <p className="font-medium text-text">{b.user?.name}</p>
                         <p className="text-xs text-text-secondary">{b.user?.email}</p>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 py-3 whitespace-nowrap">
                       <span className="font-medium">{b.room?.room_type} {b.room?.room_number}</span>
                     </td>
-                    <td className="px-6 py-4">{new Date(b.check_in_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}</td>
-                    <td className="px-6 py-4">{new Date(b.check_out_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}</td>
-                    <td className="px-6 py-4 font-semibold text-accent">₹{parseFloat(b.total_amount).toLocaleString()}</td>
-                    <td className="px-6 py-4">
-                      <span className={`px-2.5 py-1 text-xs font-bold rounded-full ${statusColors[b.status]}`}>
+                    <td className="px-4 py-3 whitespace-nowrap">{new Date(b.check_in_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{new Date(b.check_out_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}</td>
+                    <td className="px-4 py-3 font-semibold text-accent whitespace-nowrap">₹{parseFloat(b.total_amount).toLocaleString()}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${statusColors[b.status]}`}>
                         {b.status.replace('_', ' ').toUpperCase()}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex gap-1.5">
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <div className="flex items-center gap-2 flex-nowrap">
                         {b.qr_code_data && (
                           <button onClick={() => viewQR(b.id)} title="View QR"
                             className="p-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
@@ -258,18 +258,18 @@ const AdminBookings = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden">
+      <div className="overflow-x-auto w-full rounded-xl shadow bg-white border border-border">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="min-w-full text-sm text-left">
             <thead className="bg-bg">
               <tr>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">ID</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Guest</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Room</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Dates</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Amount</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Status</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Actions</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">ID</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Guest</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Room</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Dates</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Amount</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Status</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -282,24 +282,24 @@ const AdminBookings = () => {
               ) : (
                 filteredBookings.map(b => (
                   <tr key={b.id} className="hover:bg-bg/50 transition-colors">
-                    <td className="px-5 py-3 font-mono text-xs">{b.id.slice(0, 8)}</td>
-                    <td className="px-5 py-3">
+                    <td className="px-4 py-3 font-mono text-xs whitespace-nowrap">{b.id.slice(0, 8)}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
                       <p className="font-medium">{b.user?.name}</p>
                       <p className="text-xs text-text-secondary">{b.user?.email}</p>
                     </td>
-                    <td className="px-5 py-3 font-medium">{b.room?.room_type} {b.room?.room_number}</td>
-                    <td className="px-5 py-3 text-xs">
+                    <td className="px-4 py-3 font-medium whitespace-nowrap">{b.room?.room_type} {b.room?.room_number}</td>
+                    <td className="px-4 py-3 text-xs whitespace-nowrap">
                       {new Date(b.check_in_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })} →{' '}
                       {new Date(b.check_out_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}
                     </td>
-                    <td className="px-5 py-3 font-semibold text-accent">₹{parseFloat(b.total_amount).toLocaleString()}</td>
-                    <td className="px-5 py-3">
-                      <span className={`px-2 py-0.5 text-xs font-bold rounded-full ${statusColors[b.status]}`}>
+                    <td className="px-4 py-3 font-semibold text-accent whitespace-nowrap">₹{parseFloat(b.total_amount).toLocaleString()}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${statusColors[b.status]}`}>
                         {b.status.replace('_', ' ').toUpperCase()}
                       </span>
                     </td>
-                    <td className="px-5 py-3">
-                      <div className="flex gap-1">
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <div className="flex items-center gap-2 flex-nowrap">
                         {b.status === 'confirmed' && (
                           <button onClick={() => handleAction(b.id, 'checkin')} className="px-2 py-1 text-xs bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100">Check In</button>
                         )}
@@ -372,17 +372,17 @@ const AdminRooms = () => {
     <div>
       <h2 className="text-xl font-bold text-text mb-6">Room Management</h2>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden">
+      <div className="overflow-x-auto w-full rounded-xl shadow bg-white border border-border">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="min-w-full text-sm text-left">
             <thead className="bg-bg">
               <tr>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Room</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Type</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Price</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Capacity</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Status</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-text-secondary uppercase">Actions</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Room</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Type</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Price</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Capacity</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Status</th>
+                <th className="px-4 py-3 font-semibold text-xs text-text-secondary uppercase whitespace-nowrap">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -392,21 +392,21 @@ const AdminRooms = () => {
                 ))
               ) : rooms.map(room => (
                 <tr key={room.id} className="hover:bg-bg/50 transition-colors">
-                  <td className="px-5 py-4 font-bold">{room.room_number}</td>
-                  <td className="px-5 py-4">
-                    <span className={`px-2.5 py-1 text-xs font-semibold rounded-full ${
+                  <td className="px-4 py-3 font-bold whitespace-nowrap">{room.room_number}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">
+                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                       room.room_type === 'Suite' ? 'bg-purple-50 text-purple-600' :
                       room.room_type === 'Deluxe' ? 'bg-blue-50 text-blue-600' :
                       'bg-gray-50 text-gray-600'
                     }`}>{room.room_type}</span>
                   </td>
-                  <td className="px-5 py-4 font-semibold text-accent">₹{parseFloat(room.price_per_night).toLocaleString()}</td>
-                  <td className="px-5 py-4">{room.max_occupancy} guests</td>
-                  <td className="px-5 py-4">
+                  <td className="px-4 py-3 font-semibold text-accent whitespace-nowrap">₹{parseFloat(room.price_per_night).toLocaleString()}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{room.max_occupancy} guests</td>
+                  <td className="px-4 py-3 whitespace-nowrap">
                     <span className={`w-3 h-3 rounded-full inline-block ${room.is_available ? 'bg-success' : 'bg-error'}`}></span>
                     <span className="ml-2 text-xs">{room.is_available ? 'Available' : 'Unavailable'}</span>
                   </td>
-                  <td className="px-5 py-4">
+                  <td className="px-4 py-3 whitespace-nowrap">
                     <button onClick={() => toggleAvailability(room)}
                       className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
                         room.is_available ? 'bg-red-50 text-error hover:bg-red-100' : 'bg-green-50 text-green-600 hover:bg-green-100'
