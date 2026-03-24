@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Filter, MapPin, Users, Wifi, Tv, Wind, ArrowRight } from 'lucide-react';
 import api from '../services/api';
 
 const Rooms = () => {
@@ -55,16 +54,14 @@ const Rooms = () => {
         {/* Mobile filter toggle */}
         <button onClick={() => setShowFilters(!showFilters)}
           className="lg:hidden flex items-center gap-2 px-4 py-2 bg-white border border-border rounded-lg text-sm font-medium mb-4 shadow-sm">
-          <Filter className="w-4 h-4" /> {showFilters ? 'Hide' : 'Show'} Filters
+          {showFilters ? 'Hide' : 'Show'} Filters
         </button>
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <aside className={`w-full lg:w-64 flex-shrink-0 ${showFilters ? 'block' : 'hidden lg:block'}`}>
             <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-6 sticky top-24">
-              <h3 className="text-lg font-bold text-text mb-6 flex items-center gap-2">
-                <Filter className="w-5 h-5 text-accent" /> Filters
-              </h3>
+              <h3 className="text-lg font-bold text-text mb-6">Filters</h3>
 
               {/* Room Type */}
               <div className="mb-6">
@@ -133,7 +130,9 @@ const Rooms = () => {
               </div>
             ) : rooms.length === 0 ? (
               <div className="text-center py-20">
-                <MapPin className="w-16 h-16 text-text-secondary/30 mx-auto mb-4" />
+                <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-gray-400 text-2xl">📍</span>
+                </div>
                 <h3 className="text-xl font-semibold text-text mb-2">No rooms found</h3>
                 <p className="text-text-secondary">Try adjusting your filters or dates.</p>
               </div>
@@ -168,10 +167,10 @@ const Rooms = () => {
                         </div>
                         <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">{room.description}</p>
                         <div className="flex flex-wrap gap-2 mt-1">
-                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Users className="w-3.5 h-3.5" /> {room.max_occupancy} guests</span>
-                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Wifi className="w-3.5 h-3.5" /> WiFi</span>
-                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Wind className="w-3.5 h-3.5" /> AC</span>
-                          <span className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200"><Tv className="w-3.5 h-3.5" /> TV</span>
+                          <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">{room.max_occupancy} guests</span>
+                          <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">WiFi</span>
+                          <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">AC</span>
+                          <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full border border-gray-200">TV</span>
                         </div>
                         <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                           <div className="flex flex-wrap gap-2">

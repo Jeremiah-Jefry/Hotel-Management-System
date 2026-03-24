@@ -1,4 +1,3 @@
-import { Hotel, Github, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => (
@@ -9,7 +8,7 @@ const Footer = () => (
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-9 h-9 rounded-lg gradient-accent flex items-center justify-center">
-              <Hotel className="w-5 h-5 text-primary-dark" />
+              <span className="text-primary-dark font-bold text-lg">H</span>
             </div>
             <span className="text-xl font-bold text-white">Hotel<span className="text-accent">Ease</span></span>
           </div>
@@ -33,14 +32,14 @@ const Footer = () => (
         <div>
             <h4 className="text-[#F59E0B] font-semibold text-sm uppercase tracking-wider mb-3">Contact</h4>
           <ul className="space-y-2.5">
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <MapPin className="w-4 h-4 text-accent" /> 123 Hotel Street, Mumbai
+            <li className="text-sm text-white/60">
+              📍 123 Hotel Street, Mumbai
             </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Phone className="w-4 h-4 text-accent" /> +91 98765 43210
+            <li className="text-sm text-white/60">
+              📞 +91 98765 43210
             </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Mail className="w-4 h-4 text-accent" /> info@hotelease.com
+            <li className="text-sm text-white/60">
+              📧 info@hotelease.com
             </li>
           </ul>
         </div>

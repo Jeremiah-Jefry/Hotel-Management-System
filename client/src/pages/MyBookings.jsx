@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, MapPin, QrCode, X, Eye } from 'lucide-react';
 import api from '../services/api';
 import toast from 'react-hot-toast';
 
@@ -69,11 +68,11 @@ const MyBookings = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {bookings.length === 0 ? (
           <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 text-center">
             <div className="bg-gray-100 rounded-full p-6 mb-2">
-              <Calendar className="w-16 h-16 text-gray-300" />
+              <span className="text-gray-300 text-2xl">📅</span>
             </div>
             <h3 className="text-xl font-semibold text-gray-700">No bookings yet</h3>
             <p className="text-gray-400 text-sm max-w-xs">Start exploring our rooms and make your first booking!</p>
@@ -84,7 +83,7 @@ const MyBookings = () => {
         ) : (
           <div className="space-y-4">
             {bookings.map((b, idx) => (
-              <div key={b.id} className="bg-white rounded-2xl shadow-sm border border-border overflow-hidden card-hover animate-fade-in" style={{ animationDelay: `${idx * 0.05}s` }}>
+              <div key={b.id} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden card-hover animate-fade-in" style={{ animationDelay: `${idx * 0.05}s` }}>
                 <div className="flex flex-col sm:flex-row">
                   <div className="sm:w-48 h-40 sm:h-auto overflow-hidden shrink-0">
                     <img src={b.room?.image_url} alt={b.room?.room_type} className="w-full h-full object-cover" />
@@ -92,8 +91,8 @@ const MyBookings = () => {
                   <div className="flex-1 p-5 sm:p-6">
                     <div className="flex flex-col sm:flex-row justify-between items-start gap-3 mb-3">
                       <div>
-                        <h3 className="text-lg font-bold text-text">{b.room?.room_type} Room — {b.room?.room_number}</h3>
-                        <p className="text-xs text-text-secondary font-mono">ID: {b.id.slice(0, 13)}...</p>
+                        <h3 className="text-lg font-bold text-gray-800">{b.room?.room_type} Room — {b.room?.room_number}</h3>
+                        <p className="text-xs text-gray-500 font-mono">ID: {b.id.slice(0, 13)}...</p>
                       </div>
                       <span className={`px-3 py-1 text-xs font-bold rounded-full ${statusColors[b.status]}`}>
                         {b.status.replace('_', ' ').toUpperCase()}
@@ -102,40 +101,40 @@ const MyBookings = () => {
 
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm mb-4">
                       <div>
-                        <span className="text-text-secondary text-xs block">Check-in</span>
+                        <span className="text-gray-500 text-xs block">Check-in</span>
                         <span className="font-medium">{new Date(b.check_in_date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
                       </div>
                       <div>
-                        <span className="text-text-secondary text-xs block">Check-out</span>
+                        <span className="text-gray-500 text-xs block">Check-out</span>
                         <span className="font-medium">{new Date(b.check_out_date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
                       </div>
                       <div>
-                        <span className="text-text-secondary text-xs block">Nights</span>
+                        <span className="text-gray-500 text-xs block">Nights</span>
                         <span className="font-medium">{b.total_nights}</span>
                       </div>
                       <div>
-                        <span className="text-text-secondary text-xs block">Total</span>
-                        <span className="font-bold text-accent">₹{parseFloat(b.total_amount).toLocaleString()}</span>
+                        <span className="text-gray-500 text-xs block">Total</span>
+                        <span className="font-bold text-amber-600">₹{parseFloat(b.total_amount).toLocaleString()}</span>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
                       {b.status === 'confirmed' && (
                         <button onClick={() => viewQR(b.id)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary text-xs font-semibold rounded-lg hover:bg-primary/20 transition-colors">
-                          <QrCode className="w-3.5 h-3.5" /> View QR
+                          className="px-3 py-1.5 bg-blue-50 text-blue-600 text-xs font-semibold rounded-lg hover:bg-blue-100 transition-colors">
+                          View QR
                         </button>
                       )}
                       {b.status === 'confirmed' && (
                         <Link to={`/confirmation/${b.id}`}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-accent/10 text-accent-dark text-xs font-semibold rounded-lg hover:bg-accent/20 transition-colors">
-                          <Eye className="w-3.5 h-3.5" /> View Details
+                          className="px-3 py-1.5 bg-amber-50 text-amber-600 text-xs font-semibold rounded-lg hover:bg-amber-100 transition-colors">
+                          View Details
                         </Link>
                       )}
                       {['pending', 'confirmed'].includes(b.status) && (
                         <button onClick={() => handleCancel(b.id)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-red-50 text-error text-xs font-semibold rounded-lg hover:bg-red-100 transition-colors">
-                          <X className="w-3.5 h-3.5" /> Cancel
+                          className="px-3 py-1.5 bg-red-50 text-red-600 text-xs font-semibold rounded-lg hover:bg-red-100 transition-colors">
+                          Cancel
                         </button>
                       )}
                     </div>
@@ -153,7 +152,7 @@ const MyBookings = () => {
           <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl animate-slide-up" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-bold text-text">QR Code</h3>
-              <button onClick={() => setQrModal(null)} className="p-1 hover:bg-bg rounded-lg"><X className="w-5 h-5" /></button>
+              <button onClick={() => setQrModal(null)} className="p-1 hover:bg-bg rounded-lg">×</button>
             </div>
             <div className="text-center">
               <div className="bg-bg rounded-xl p-6 mb-4">

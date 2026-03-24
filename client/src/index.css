@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-@theme {
+:root {
   --color-primary: #1E3A5F;
   --color-primary-light: #2A4F7F;
   --color-primary-dark: #142A45;
