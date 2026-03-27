@@ -2,11 +2,11 @@
 
 > **Team:** Code Alchemists | **Project ID:** P-2024-28-FW-128
 
-## 🏨 Overview
+##  Overview
 
 HotelEase is a full-stack web application for hotel reservation management. It enables guests to browse rooms, book stays, make secure payments via Razorpay, and receive QR codes for contactless check-in. Admins can manage bookings, rooms, and view analytics through a real-time dashboard.
 
-## ⚡ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -42,7 +42,7 @@ npm run dev     # Starts on http://localhost:5173
 ### 3. Open the App
 Navigate to **http://localhost:5173** in your browser.
 
-## 🔑 Demo Credentials
+##  Demo Credentials
 
 | Role | Email | Password |
 |------|-------|----------|
@@ -50,22 +50,22 @@ Navigate to **http://localhost:5173** in your browser.
 | **Guest 1** | guest1@gmail.com | Guest@123 |
 | **Guest 2** | guest2@gmail.com | Guest@123 |
 
-## 🏗️ Features
+##  Features
 
 ### Guest Features
-- 🔍 Browse & filter rooms by type, price, dates
-- 📅 Date-based booking with availability check
-- 💳 Razorpay payment integration (test mode)
-- 📱 QR code for contactless check-in
-- 🤖 AI chatbot concierge
-- 📋 Booking history management
+-  Browse & filter rooms by type, price, dates
+-  Date-based booking with availability check
+-  Razorpay payment integration (test mode)
+-  QR code for contactless check-in
+-  AI chatbot concierge
+-  Booking history management
 
 ### Admin Features
-- 📊 Real-time dashboard with stats
-- 🏨 Room management (CRUD + availability toggle)
-- ✅ Check-in / Check-out management
-- 📋 Full booking management with search & filters
-- 🔒 Role-based access control
+-  Real-time dashboard with stats
+-  Room management (CRUD + availability toggle)
+-  Check-in / Check-out management
+-  Full booking management with search & filters
+-  Role-based access control
 
 ### Security
 - JWT authentication with bcrypt password hashing
@@ -74,7 +74,7 @@ Navigate to **http://localhost:5173** in your browser.
 - Input validation with express-validator
 - Helmet security headers
 
-## 🗂️ Project Structure
+##  Project Structure
 ```
 Hotel-Management-System/
 ├── server/                    # Backend
@@ -96,7 +96,7 @@ Hotel-Management-System/
 └── README.md
 ```
 
-## 🌐 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -115,14 +115,14 @@ Hotel-Management-System/
 | PUT | `/api/admin/bookings/:id/checkin` | Admin check-in |
 | PUT | `/api/admin/bookings/:id/checkout` | Admin check-out |
 
-## 📋 Seed Data
+##  Seed Data
 
 **10 Rooms:**
 - 101–104: Standard @ ₹1,500/night
 - 201–204: Deluxe @ ₹2,500/night
 - 301–302: Suite @ ₹4,000/night
 
-## ⚙️ Environment Variables
+##  Environment Variables
 
 ### Server (`server/.env`)
 ```
